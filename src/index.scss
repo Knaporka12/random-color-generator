@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+//zmienne i mixiny
+
+$font-color: black;
+$border-color: black;
+$border: 3px solid $border-color;
+
+@mixin flex-center($direction: row, $wrap: wrap) {
+    display: flex;
+    flex-flow: $direction $wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+// koniec zmiennych i mixinów
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    @include flex-center(column, nowrap);
+    font-family: "Roboto", sans-serif;
+    min-height: 100vh;
+    color: $font-color
+}
+
+#root, .App{
+    width: 100%;
+    flex-grow: 1;
+}
+
+#root{
+    @include flex-center(column, nowrap)
+}
+
+.App{
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+}
+
+h1, h2, h3{
+    text-align: center;
+}
+
+.header{
+    width: 100%;
+    @include flex-center(column, nowrap);
+
+    &__h2{
+        font-size: 3.25rem;
+        margin: 0.75rem 0rem;
+    }
+
+    &__btn{
+        font-size: 1.35rem;
+        width: 250px;
+        padding: 1rem 0.5rem;
+        margin: 0.5rem;
+        border: $border;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+}
+
+.main{
+    padding-top: 9rem;
+    width: 100%;
+    @include flex-center(column, nowrap);
+    gap: 5.5rem;
+    align-self: start;
+
+    &__h3{
+        font-size: 2.75rem;
+    }
+
+    &__container--generator{
+        width: 100%;
+        @include flex-center(column, nowrap);
+        gap: 1rem;
+    }
+
+    &__h1{
+        font-size: 6rem;
+    }
+
+    &__btn{
+        font-size: 1.35rem;
+        width: 250px;
+        padding: 1rem 0.5rem;
+        margin: 0.5rem;
+        border: $border;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+}

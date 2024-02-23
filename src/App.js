@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./Header";
+import Generator from "./Generator";
+import { useContext } from "react"
+import DataContext from "./Context/DataContext"
+
 
 function App() {
+
+  const {color} = useContext(DataContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div className="App" style={{backgroundColor: color}}>
+
+      <Header></Header>
+      <Generator></Generator>
+
     </div>
+
   );
+
 }
 
 export default App;
