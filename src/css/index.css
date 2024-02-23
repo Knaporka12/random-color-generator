@@ -15,7 +15,8 @@ body {
   color: black;
 }
 
-#root, .App {
+#root,
+.App {
   width: 100%;
   flex-grow: 1;
 }
@@ -32,7 +33,9 @@ body {
   grid-template-rows: 1fr 4fr;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   text-align: center;
 }
 

@@ -14,47 +14,50 @@ $border: 3px solid $border-color;
 
 // koniec zmiennych i mixinów
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     @include flex-center(column, nowrap);
     font-family: "Roboto", sans-serif;
     min-height: 100vh;
     color: $font-color
 }
 
-#root, .App{
+#root,
+.App {
     width: 100%;
     flex-grow: 1;
 }
 
-#root{
+#root {
     @include flex-center(column, nowrap)
 }
 
-.App{
+.App {
     display: grid;
     grid-template-rows: 1fr 4fr;
 }
 
-h1, h2, h3{
+h1,
+h2,
+h3 {
     text-align: center;
 }
 
-.header{
+.header {
     width: 100%;
     @include flex-center(column, nowrap);
 
-    &__h2{
+    &__h2 {
         font-size: 3.25rem;
         margin: 0.75rem 0rem;
     }
 
-    &__btn{
+    &__btn {
         font-size: 1.35rem;
         width: 250px;
         padding: 1rem 0.5rem;
@@ -65,28 +68,28 @@ h1, h2, h3{
     }
 }
 
-.main{
+.main {
     padding-top: 9rem;
     width: 100%;
     @include flex-center(column, nowrap);
     gap: 5.5rem;
     align-self: start;
 
-    &__h3{
+    &__h3 {
         font-size: 2.75rem;
     }
 
-    &__container--generator{
+    &__container--generator {
         width: 100%;
         @include flex-center(column, nowrap);
         gap: 1rem;
     }
 
-    &__h1{
+    &__h1 {
         font-size: 6rem;
     }
 
-    &__btn{
+    &__btn {
         font-size: 1.35rem;
         width: 250px;
         padding: 1rem 0.5rem;

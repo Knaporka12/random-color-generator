@@ -1,31 +1,35 @@
-import { createContext, useState} from "react";
+import { createContext, useState } from "react";
 
 const DataContext = createContext({});
 
-export const ContextProvider = ({children}) => {
+export const ContextProvider = ({ children }) => {
 
     const [type, setType] = useState('hex');
     const [color, setColor] = useState('#ffffff');
 
+    const randomColorUtility = (range) => {
+        return Math.floor(Math.random() * range);
+    }
+
     const generateColors = () => {
 
-        if (type === 'rgb'){
+        if (type === 'rgb') {
 
-            const rgb1 = Math.floor(Math.random() * 256 );
-            const rgb2 = Math.floor(Math.random() * 256 );
-            const rgb3 = Math.floor(Math.random() * 256 );
+            const rgb1 = randomColorUtility(256);
+            const rgb2 = randomColorUtility(256);
+            const rgb3 = randomColorUtility(256);
             const rgbColor = `RGB(${rgb1}, ${rgb2}, ${rgb3})`
             setColor(rgbColor);
 
         } else {
-        
+
             const hexOptions = '0123456789ABCDEF';
             let hexColor = '#';
 
-            for (let i = 0; i < 6; i++){
+            for (let i = 0; i < 6; i++) {
 
-                const hex = hexOptions[Math.floor(Math.random() * 16 )];
-                hexColor+=hex;
+                const hex = hexOptions[randomColorUtility(16)];
+                hexColor += hex;
 
             }
 
@@ -44,11 +48,11 @@ export const ContextProvider = ({children}) => {
 
         let i = 0;
         let rgb = '';
-        while (i < color.length - 1 ){
-            
-            while(!isNaN(color[i])){
+        while (i < color.length - 1) {
 
-                rgb+=color[i];
+            while (!isNaN(color[i])) {
+
+                rgb += color[i];
                 i++;
 
             }
@@ -62,7 +66,7 @@ export const ContextProvider = ({children}) => {
         const r = Number(rgbTab[0]);
         const g = Number(rgbTab[1]);
         const b = Number(rgbTab[2]);
-        
+
         const hex = "#" + toHex(r) + toHex(g) + toHex(b);
 
         setColor(hex);
@@ -78,14 +82,14 @@ export const ContextProvider = ({children}) => {
         g = parseInt(hex.substring(2, 4), 16);
         b = parseInt(hex.substring(4, 6), 16);
 
-        const rgb =  `RGB(${r}, ${g}, ${b})`;
+        const rgb = `RGB(${r}, ${g}, ${b})`;
         setColor(rgb);
 
     }
 
     return (
 
-        <DataContext.Provider value = {{
+        <DataContext.Provider value={{
 
             type,
             setType,
