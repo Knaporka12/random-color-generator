@@ -6,6 +6,7 @@ export const ContextProvider = ({ children }) => {
 
     const [type, setType] = useState('hex');
     const [color, setColor] = useState('#ffffff');
+    const [fontColor, setFontColor] = useState('#000000');
 
     const randomColorUtility = (range) => {
         return Math.floor(Math.random() * range);
@@ -15,24 +16,37 @@ export const ContextProvider = ({ children }) => {
 
         if (type === 'rgb') {
 
-            const rgb1 = randomColorUtility(256);
-            const rgb2 = randomColorUtility(256);
-            const rgb3 = randomColorUtility(256);
-            const rgbColor = `RGB(${rgb1}, ${rgb2}, ${rgb3})`
+            let rgb = [];
+            let darkCount = 0;
+
+            for (let i = 0; i < 3; i++){
+                rgb[i] = randomColorUtility(256);
+                if (rgb[i] < 60) darkCount ++;
+            }
+
+            darkCount === 3 ? setFontColor('#ffffff') : setFontColor('#000000')
+            const rgbColor = `RGB(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`
             setColor(rgbColor);
 
         } else {
 
-            const hexOptions = '0123456789ABCDEF';
+            const hexOptions = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
             let hexColor = '#';
-
+            let darkCount = 0;
             for (let i = 0; i < 6; i++) {
-
+                
                 const hex = hexOptions[randomColorUtility(16)];
                 hexColor += hex;
 
+                if (i % 2 == 0){
+                    if (!isNaN(hex)){
+                        if (hex < 4) darkCount++
+                    }
+                }
+
             }
 
+            darkCount === 3 ? setFontColor('#ffffff') : setFontColor('#000000')
             setColor(hexColor);
 
         }
@@ -97,7 +111,8 @@ export const ContextProvider = ({ children }) => {
             setColor,
             generateColors,
             rgbToHex,
-            hexToRgb
+            hexToRgb,
+            fontColor
 
         }}>
             {children}

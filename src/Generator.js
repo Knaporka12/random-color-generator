@@ -3,11 +3,12 @@ import DataContext from "./Context/DataContext"
 
 const Generator = () => {
 
-    const { type, color, generateColors } = useContext(DataContext);
+    const { type, color, generateColors, fontColor } = useContext(DataContext);
+    console.log(fontColor)
 
     return (
 
-        <main className='main'>
+        <main className='main' style={{color: `${fontColor}`}}>
 
             <h3 className="main__h3">{type === 'hex' ? <>Hex</> : <>RGB</>} color</h3>
 

@@ -3,7 +3,7 @@ import DataContext from "./Context/DataContext"
 
 const Header = () => {
 
-  const {type, setType, rgbToHex, hexToRgb} = useContext(DataContext);
+  const {type, setType, rgbToHex, hexToRgb, fontColor} = useContext(DataContext);
   
   const handleClick = () => {
 
@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
 
-    <header className='header'>
+    <header className='header' style={{color: `${fontColor}`}}>
 
       <h2 className="header__h2">Random HEX and RGB color generator</h2>
 
